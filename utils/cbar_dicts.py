@@ -95,6 +95,14 @@ class CBar:
                                       'background_fill_alpha': 0.0,
                                       'ticker': FixedTicker(ticks=np.arange(-3, 3.5, 0.5)),
                                       'major_label_overrides': {-3: '< -3', 3: '3+'}}},
+            'Relative CP': {'cmap': 'RdYlGn',
+                                 'clim': (50, 150),
+                                 'barlim': (40, 160),
+                                 'colorbar_opts': {'height': 20,
+                                                   'width': int(self.control_width*0.95),
+                                                   'background_fill_alpha': 0.0,
+                                                   'ticker': FixedTicker(ticks=[55, 75, 100, 125, 145]),
+                                                   'major_label_overrides': {55: '50%', 75: '75%', 100: 'Avg.', 125: '125%', 145: '145%'}}},
         }
 
     def get(self, name):

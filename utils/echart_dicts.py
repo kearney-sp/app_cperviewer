@@ -276,6 +276,75 @@ class Line:
                             'itemStyle': {'color': '#ff333c'}
                            }
                           ]
-            }    
+            }   
+
+            self.ts_cp = {
+                'title': [{'left': 'left', 'text': 'Crude protein'}],
+                'grid': [{'bottom': 40}],
+                'legend': {'orient': 'vertical',
+                           'right': 10,
+                           'top': 'top',
+                           'data': [{'name': 'long-term avg.',
+                                     'icon': 'path://M180 1000 l0 -30 200 0 200 0 0 30 0 30 -200 0 -200 0 0 -30z'},
+                                    {'name': 'TRM',
+                                     'icon': 'path://M180 1000 l0 -30 200 0 200 0 0 30 0 30 -200 0 -200 0 0 -30z'},
+                                    {'name': 'Heavy',
+                                     'icon': 'path://M180 1000 l0 -30 200 0 200 0 0 30 0 30 -200 0 -200 0 0 -30z'}]},
+                'tooltip': {'trigger': 'axis'},
+                'xAxis': [{'type': 'time'}],
+                'yAxis': [{'max': 14,
+                           'min': 4}],
+                'series': [{'name': 'long-term avg.',
+                            'type': 'line',
+                            'showSymbol': False,
+                            'data': list(map(list, zip(self.aoi_means[(self.aoi_means['Pasture'] == 'cper') & 
+                                                       (self.aoi_means['Year'] == 'long-term avg.')]['date'],
+                                                       self.aoi_means[(self.aoi_means['Pasture'] == 'cper') & 
+                                                       (self.aoi_means['Year'] == 'long-term avg.')]['CP']))),
+                            'itemStyle': {'color': 'black'}
+                           },
+                           {'name': str(self.comp_yr),
+                            'type': 'line',
+                            'showSymbol': False,
+                            'data': list(map(list, zip(self.aoi_means[(self.aoi_means['Pasture'] == 'cper') & 
+                                                       (self.aoi_means['Year'] == str(self.comp_yr))]['date'],
+                                                       self.aoi_means[(self.aoi_means['Pasture'] == 'cper') & 
+                                                       (self.aoi_means['Year'] == str(self.comp_yr))]['CP']))),
+                            'itemStyle': {'color': 'black'},
+                            'lineStyle': {'width': 1,
+                                          'type': 'dotted'}
+                           },
+                           {'name': 'Pasture (' + str(self.map_yr) + ')',
+                            'type': 'line',
+                            'showSymbol': False,
+                            'data': [],
+                            'itemStyle': {'color': self.past_col}
+                           },
+                           {'name': 'Drawing',
+                            'type': 'line',
+                            'showSymbol': False,
+                            'data': [],
+                            'itemStyle': {'color': self.poly_col}
+                           },
+                           {'name': 'TRM',
+                            'type': 'line',
+                            'showSymbol': False,
+                            'data': list(map(list, zip(self.aoi_means[(self.aoi_means['Pasture'] == 'TRM') & 
+                                                       (self.aoi_means['Year'] == str(self.map_yr))]['date'],
+                                                       self.aoi_means[(self.aoi_means['Pasture'] == 'TRM') & 
+                                                       (self.aoi_means['Year'] == str(self.map_yr))]['CP']))),
+                            'itemStyle': {'color': '#33ceff'}
+                           },
+                           {'name': 'Heavy',
+                            'type': 'line',
+                            'showSymbol': False,
+                            'data': list(map(list, zip(self.aoi_means[(self.aoi_means['Pasture'] == 'Heavy') & 
+                                                       (self.aoi_means['Year'] == str(self.map_yr))]['date'],
+                                                       self.aoi_means[(self.aoi_means['Pasture'] == 'Heavy') & 
+                                                       (self.aoi_means['Year'] == str(self.map_yr))]['CP']))),
+                            'itemStyle': {'color': '#ff333c'}
+                           }
+                          ]
+            }   
 
         
