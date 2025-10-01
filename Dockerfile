@@ -50,6 +50,10 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
+# accept Anaconda terms of service in non-interactive mode
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
 # create production environment
 RUN conda env create -p /env --file /tmp/environment.yml && \
   conda clean -afy && \
